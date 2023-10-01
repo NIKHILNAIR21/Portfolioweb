@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="preload"
+      as="font"
+      href="https://blog.thesimplifieddev.com/wp-content/themes/smart-mag/css/icons/fonts/ts-icons.woff2?v2.4"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Navbar Section Start -->
+    <header>
+      <a href="#">Portfolio</a>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+      </ul>
+    </header>
+    <!-- Navbar Section End -->
+    <!-- Home Section Start -->
+    <section id="home">
+      <img decoding="async" src="main.png" alt="" />
+      <h1>Hello, I’m John Doe</h1>
+      <h2>Frontend Developer</h2>
+      <p>
+        Lorem ipsum dolor sit amet cons <br />
+        adipisicing elit. Minima, consectetur <br />
+        ullam?
+      </p>
+      <a href="#contact">Download CV</a>
+    </section>
+    <!-- Home Section End -->
+    <!-- About Section Start -->
+    <section id="about">
+      <div>
+        <h2>About Me</h2>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis beatae
+          eius quae ab consequatur est perferendis dicta. Ad repellendus
+          perferendis minus sunt error eos dicta enim accusantium ipsum veniam
+          debitis quasi sint cum fugiat porro quam, blanditiis a ratione quod!
+        </p>
+      </div>
+      <div>
+        <img src="./hero.png" width="200px" alt="" />
+      </div>
+    </section>
+    <!-- About Section End -->
+    <!-- Skills Section Start -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skill-set">
+        <h3>HTML</h3>
+
+        <h3>CSS</h3>
+
+        <h3>JavaScript</h3>
+
+        <h3>React</h3>
+        <h3>Redux-toolkit</h3>
+        <h3>Tailwind CSS</h3>
+        <h3>Git</h3>
+      </div>
+    </section>
+    <!-- Skills Section End -->
+    <!-- Services Section Start -->
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="event">
+          <h4>UI developer</h4>
+          <p>Company Name 1</p>
+          <p>Start Date - End Date</p>
+        </div>
+        <div class="event">
+          <h4>UI developer</h4>
+          <p>Company Name 1</p>
+          <p>Start Date - End Date</p>
+        </div>
+        <div class="event">
+          <h4>Frontend Developer</h4>
+          <p>Company Name 2</p>
+          <p>Start Date - End Date</p>
+        </div>
+        <!-- Add more events here -->
+      </div>
+    </section>
+
+    <section class="section" id="edu">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="event education">
+          <h4 class="degree">Degree 1</h4>
+          <p>University Name 1</p>
+          <p>Start Date - End Date</p>
+        </div>
+        <div class="event education">
+          <h4 class="degree">Degree 2</h4>
+          <p>University Name 2</p>
+          <p>Start Date - End Date</p>
+        </div>
+        <!-- Add more events here -->
+      </div>
+    </section>
+    <!-- Contact Section End -->
+    <footer>
+      <h2>Follow Us</h2>
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+      <p>YourEmail.com | +1233-22-222 | India</p>
+    </footer>
+    <!-- Javascript -->
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector("ul");
+
+      hamburger.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
