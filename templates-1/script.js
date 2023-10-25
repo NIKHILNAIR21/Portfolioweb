@@ -130,12 +130,7 @@ if (profileId) {
                 </div>
               </div>
             </div>
-            <img
-              src="./assets/arrow.png"
-              alt="Arrow icon"
-              class="icon arrow"
-              onclick="location.href='./#experience'"
-            />
+           
           </section>
           <section id="experience">
             <p class="section__text__p1">Explore My</p>
@@ -167,12 +162,7 @@ if (profileId) {
                   </div>
                 </div>
             
-            <img
-              src="./assets/arrow.png"
-              alt="Arrow icon"
-              class="icon arrow"
-              onclick="location.href='./#projects'"
-            />
+         
           </section>
           <section id="projects">
             <p class="section__text__p1">Browse My Recent</p>
@@ -183,11 +173,7 @@ if (profileId) {
               return(
                 `   <div class="details-container color-container">
                 <div class="article-container">
-                  <img
-                    src="./assets/project-1.png"
-                    alt="Project 1"
-                    class="project-img"
-                  />
+               
                 </div>
                 <h2 class="experience-sub-title project-title">${data?.title}</h2>
                 <div class="btn-container">
@@ -208,12 +194,7 @@ if (profileId) {
         
               </div>
             </div>
-            <img
-              src="./assets/arrow.png"
-              alt="Arrow icon"
-              class="icon arrow"
-              onclick="location.href='./#projects'"
-            />
+        
           </section>
           <section id="contact">
             <p class="section__text__p1">Get in Touch</p>
