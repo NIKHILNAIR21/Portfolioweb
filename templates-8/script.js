@@ -550,7 +550,7 @@ if (profileId) {
                     <div class="portfolio-info">
                       <div class="portfolio-links">
 
-                        <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                        <a href=${data?.link?data?.link:"#"} class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
                       </div>
                     </div>
                     `
