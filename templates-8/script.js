@@ -294,7 +294,7 @@ const profileId = getQueryParam("profile");
 // Check if the 'profile' parameter is present in the URL
 if (profileId) {
   // Construct the API URL with the profileId
-  const apiUrl = `https://api.resumebuild.in//api/candidate/web-profile/${profileId}`;
+  const apiUrl = `https://api.resumebuild.in/api/candidate/web-profile/${profileId}`;
 
   // Make an API request (assuming you are using fetch)
   fetch(apiUrl)
