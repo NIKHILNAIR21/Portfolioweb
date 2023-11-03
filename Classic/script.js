@@ -183,7 +183,7 @@ if (profileId) {
               ${res?.eductaions
                 ?.map((data) => {
                   return `  <div class="col-sm-4">
-                  <div class="single-horizontal-timeline">
+                  <div class="single-horizontal-timeline">  
                     <div class="experience-time">
                       <h2>${data?.start_date} - ${
                     data?.is_current ? "Currently Studying" : data?.end_date
