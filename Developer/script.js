@@ -443,28 +443,28 @@ if (profileId) {
               <div class="row skills-content">
       
       
-            ${res?.skills
-              ?.map((data) => {
-                return `
-                <div class="col-lg-6">
+              ${res?.skills
+                ?.map((data) => {
+                  return `
+                  <div class="col-lg-6">
 
-                    <div class="progress">
-                    <span class="skill">${data?.skill}<i class="val"></i></span>
-                    <div class="progress-bar-wrap">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="90" style="width: ${
-                        data?.type == 1
-                          ? "33%"
-                          : data?.type == 2
-                          ? "66%"
-                          : "100%"
-                      }" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress">
+                      <span class="skill">${data?.skill}<i class="val"></i></span>
+                      <div class="progress-bar-wrap">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="90" style="width: ${
+                          data?.type == 1
+                            ? "33%"
+                            : data?.type == 2
+                            ? "66%"
+                            : "100%"
+                        }" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                    `;
-              })
-              ?.join("")}
+                      `;
+                })
+                ?.join("")}
       
       
               </div>
@@ -510,7 +510,8 @@ if (profileId) {
                         <h4>${data?.designation}</h4>
                         <h5>${data?.start_date} - ${
                         data?.is_current ? "Present" : data?.end_date
-                      }</h5>
+                      }
+                      </h5>
                         
                 <p>${data?.description}</p>
                       </div>

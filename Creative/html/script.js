@@ -1,37 +1,37 @@
 function toggleMenu() {
-    const menu = document.querySelector(".menu-links");
-    const icon = document.querySelector(".hamburger-icon");
-    menu.classList.toggle("open");
-    icon.classList.toggle("open");
-  }
-  
-  // Function to parse query parameters from URL
-  function getQueryParam(parameterName) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(parameterName);
-  }
-  
-  // Get the 'profile' query parameter value
-  const profileId = getQueryParam("profile");
-  
-  // Check if the 'profile' parameter is present in the URL
-  if (profileId) {
-    // Construct the API URL with the profileId
-    const apiUrl = `https://api.resumebuild.in/api/candidate/web-profile/${profileId}`;
-  
-    // Make an API request (assuming you are using fetch)
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((item) => {
-        // Update the HTML with the dynamic content
-        let res = item?.data;
-        const dynamicContent = document.getElementById("dynamic-content");
-        dynamicContent.innerHTML = `     
+  const menu = document.querySelector(".menu-links");
+  const icon = document.querySelector(".hamburger-icon");
+  menu.classList.toggle("open");
+  icon.classList.toggle("open");
+}
+
+// Function to parse query parameters from URL
+function getQueryParam(parameterName) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(parameterName);
+}
+
+// Get the 'profile' query parameter value
+const profileId = getQueryParam("profile");
+
+// Check if the 'profile' parameter is present in the URL
+if (profileId) {
+  // Construct the API URL with the profileId
+  const apiUrl = `https://api.resumebuild.in/api/candidate/web-profile/${profileId}`;
+
+  // Make an API request (assuming you are using fetch)
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((item) => {
+      // Update the HTML with the dynamic content
+      let res = item?.data;
+      const dynamicContent = document.getElementById("dynamic-content");
+      dynamicContent.innerHTML = `     
         <div class="vg-page page-home" id="home" style="background-image: url(../assets/img/bg_image_1.jpg)">
         <!-- Navbar -->
         <div class="navbar navbar-expand-lg navbar-dark sticky" data-offset="500">
           <div class="container">
-            <a href="" class="navbar-brand">V-Folio</a>
+            <a href="" class="navbar-brand">${res?.full_name}</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#main-navbar" aria-expanded="true">
               <span class="ti-menu"></span>
             </button>
@@ -59,8 +59,10 @@ function toggleMenu() {
         <!-- Caption header -->
         <div class="caption-header text-center wow zoomInDown">
           <h5 class="fw-normal">Welcome</h5>
-          <h1 class="fw-light mb-4">I'm <b class="fg-theme">Stephen</b> Doe</h1>
-          <div class="badge">UI/UX & Web Designer</div>
+          <h1 class="fw-light mb-4">I'm <b class="fg-theme">${
+            res?.full_name
+          }</h1>
+          <div class="badge">${res?.position}</div>
         </div> <!-- End Caption header -->
         <div class="floating-button"><span class="ti-mouse"></span></div>
       </div>
@@ -70,78 +72,46 @@ function toggleMenu() {
           <div class="row">
             <div class="col-lg-4 py-3">
               <div class="img-place wow fadeInUp">
-                <img src="../assets/img/person.jpg" alt="">
+                <img src=${res?.profile_picture} alt="">
               </div>
             </div>
             <div class="col-lg-6 offset-lg-1 wow fadeInRight">
-              <h1 class="fw-light">Stephen Doe</h1>
-              <h5 class="fg-theme mb-3">UI/UX & Web Designer</h5>
-              <p class="text-muted">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form but the majority have suffered alteration in some</p>
-              <ul class="theme-list">
-                <li><b>From:</b> Texas, US</li>
-                <li><b>Lives In:</b> Texas, US</li>
-                <li><b>Age:</b> 25</li>
-                <li><b>Gender:</b> Male</li>
-              </ul>
-              <button class="btn btn-theme-outline">Download CV</button>
+              <h1 class="fw-light">${res?.full_name}</h1>
+              <h5 class="fg-theme mb-3">${res?.position}</h5>
+              <p class="text-muted">${res?.summary}</p>
+             
             </div>
           </div>
         </div>
         <div class="container py-5">
           <h1 class="text-center fw-normal wow fadeIn">My Skills</h1>
           <div class="row py-3">
-            <div class="col-md-6">
+          ${res?.skills
+            ?.map((data) => {
+              return `
+
+              <div class="col-md-6">
               <div class="px-lg-3">
-                <h4 class="wow fadeInUp">Coding skills</h4>
                 <div class="progress-wrapper wow fadeInUp">
-                  <span class="caption">JavaScript</span>
+                  <span class="caption">${data?.skill}</span>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 86%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">86%</div>
+                    <div class="progress-bar" role="progressbar"    style="width: ${
+                      data?.type == 1 ? "33%" : data?.type == 2 ? "66%" : "100%"
+                    }" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
-                <div class="progress-wrapper wow fadeInUp">
-                  <span class="caption">PHP</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">80%</div>
-                  </div>
-                </div>
-                <div class="progress-wrapper wow fadeInUp">
-                  <span class="caption">HTML + CSS</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">100%</div>
-                  </div>
-                </div>
-                <div class="progress-wrapper wow fadeInUp">
-                  <span class="caption">Phyton</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">90%</div>
-                  </div>
-                </div>
+              
+             
+              
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="px-lg-3">
-                <h4 class="wow fadeInUp">Design Skills</h4>
-                <div class="progress-wrapper wow fadeInUp">
-                  <span class="caption">UI / UX Design</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 92%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">92%</div>
-                  </div>
-                </div>
-                <div class="progress-wrapper wow fadeInUp">
-                  <span class="caption">Web Design</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 99%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">99%</div>
-                  </div>
-                </div>
-                <div class="progress-wrapper wow fadeInUp">
-                  <span class="caption">Logo Design</span>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 79%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">79%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+           
+
+                    `;
+            })
+            ?.join("")}
+          
+         
           </div>
         </div>
         <div class="container pt-5">
@@ -149,59 +119,49 @@ function toggleMenu() {
             <div class="col-md-6 wow fadeInRight">
               <h2 class="fw-normal">Education</h2>
               <ul class="timeline mt-4 pr-md-5">
-                <li>
-                  <div class="title">2010</div>
+              ${res?.eductaions
+                ?.map((data) => {
+                  return `  
+                  <li>
+                  <div class="title"><p>${data?.start_date} - ${
+                    data?.is_current ? "Currently Studying" : data?.end_date
+                  }</p></div>
                   <div class="details">
-                    <h5>Specialize of course</h5>
-                    <small class="fg-theme">University of Study</small>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
+                    <h5>${data?.course}</h5>
+                    <small class="fg-theme">${data?.university}</small>
+                    <p>${data?.description} </p>
                   </div>
                 </li>
-                <li>
-                  <div class="title">2009</div>
-                  <div class="details">
-                    <h5>Specialize of course</h5>
-                    <small class="fg-theme">University of Study</small>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="title">2008</div>
-                  <div class="details">
-                    <h5>Specialize of course</h5>
-                    <small class="fg-theme">University of Study</small>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-                  </div>
-                </li>
+                `;
+                })
+                ?.join("")}
+              
               </ul>
             </div>
             <div class="col-md-6 wow fadeInRight" data-wow-delay="200ms">
               <h2 class="fw-normal">Experience</h2>
               <ul class="timeline mt-4 pr-md-5">
-                <li>
-                  <div class="title">2017 - Current</div>
+              ${res?.experiences
+                ?.map((data) => {
+                  return `
+                  <li>
+                  <div class="title">
+                  ${data?.start_date} - ${data?.is_current ? "Present":data?.end_date}
+                  
+                  </div>
                   <div class="details">
-                    <h5>Specialize of course</h5>
-                    <small class="fg-theme">University of Study</small>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
+                    <h5>${data?.designation}</h5>
+                    <small class="fg-theme">${data?.company_name}</small>
+                    <p>${data?.description} </p>
+
                   </div>
                 </li>
-                <li>
-                  <div class="title">2014</div>
-                  <div class="details">
-                    <h5>Specialize of course</h5>
-                    <small class="fg-theme">University of Study</small>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-                  </div>
-                </li>
-                <li>
-                  <div class="title">2011</div>
-                  <div class="details">
-                    <h5>Specialize of course</h5>
-                    <small class="fg-theme">University of Study</small>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-                  </div>
-                </li>
+                    `;
+                })
+                .join("")}
+              
+              
+               
               </ul>
             </div>
           </div>
@@ -300,12 +260,11 @@ function toggleMenu() {
         </div>
       </div> 
               `;
-      })
-      .catch((error) => {
-        console.error("API request error:", error);
-      });
-  } else {
-    // Handle the case when 'profile' parameter is not present
-    console.error("Profile parameter is missing from the URL.");
-  }
-  
+    })
+    .catch((error) => {
+      console.error("API request error:", error);
+    });
+} else {
+  // Handle the case when 'profile' parameter is not present
+  console.error("Profile parameter is missing from the URL.");
+}
