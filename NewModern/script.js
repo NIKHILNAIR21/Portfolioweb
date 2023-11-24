@@ -84,7 +84,9 @@ if (profileId) {
                               res?.profile_picture
                                 ? res?.profile_picture
                                 : "img/personal.jpg"
-                            } alt="">
+                            } alt=""
+                    style="max-width: 300px"
+                            >
                         </div>
                         <div class="media-body" id="about">
                             <div class="personal_text">

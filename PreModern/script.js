@@ -34,9 +34,9 @@ if (profileId) {
                 </ul>  
                 <div class="header-content">
                     <h4 class="header-subtitle" >Hello, I am</h4>
-                    <h1 class="header-title">John Doe</h1>
-                    <h6 class="header-mono" >Frond end Designer | Developer</h6>
-                    <button class="btn btn-primary btn-rounded"><i class="ti-printer pr-2"></i>Print Resume</button>
+                    <h1 class="header-title">${res?.full_name}</h1>
+                    <h6 class="header-mono" >${res?.position}</h6>
+                    
                 </div>
             </div>
         </header>
@@ -58,10 +58,10 @@ if (profileId) {
                         </li>
                     </ul>
                     <ul class="navbar-nav brand">
-                        <img src="assets/imgs/avatar.jpg" alt="" class="brand-img">
-                        <li class="brand-txt">
-                            <h5 class="brand-title">John Doe</h5>
-                            <div class="brand-subtitle">Web Designer | Developer</div>
+                        
+                        <li class="nav-item">
+                            <h5 class="brand-title">${res?.full_name}</h5>
+                            <div class="brand-subtitle">${res?.position}</div>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
@@ -83,55 +83,31 @@ if (profileId) {
                 <div class="col-lg-4 about-card">
                     <h3 class="font-weight-light">Who am I ?</h3>
                     <span class="line mb-5"></span>
-                    <h5 class="mb-3">A Web Designer / Developer Located In Our Lovely Earth</h5>
-                    <p class="mt-20">Lorem ipsum dolor sit amet, consectetur adipisicing elit.sit amet, Qui deserunt consequatur fugit repellendusillo voluptas?</p>
-                    <button class="btn btn-outline-danger"><i class="icon-down-circled2 "></i>Download My CV</button>
+                    <h5 class="mb-3">A ${res?.position} Located In ${res?.address}</h5>
+                    <p class="mt-20">${res?.summary}</p>
+            
                 </div>
                 <div class="col-lg-4 about-card">
                     <h3 class="font-weight-light">Personal Info</h3>
                     <span class="line mb-5"></span>
                     <ul class="mt40 info list-unstyled">
-                        <li><span>Birthdate</span> : 09/13/1996</li>
-                        <li><span>Email</span> : info@website.com</li>
-                        <li><span>Phone</span> : + (123) 456-7890</li>
-                        <li><span>Skype</span> : John_Doe </li>
-                        <li><span>Address</span> :  12345 Fake ST NoWhere AB Country.</li>
+                        
+                        <li><span>Email</span> : ${res?.email}</li>
+                        <li><span>Phone</span> : ${res?.mobile_no}</li>
+                        <li><span>Address</span> : ${res?.address}</li>
                     </ul>
-                    <ul class="social-icons pt-3">
-                        <li class="social-item"><a class="social-link" href="#"><i class="ti-facebook" aria-hidden="true"></i></a></li>
-                        <li class="social-item"><a class="social-link" href="#"><i class="ti-twitter" aria-hidden="true"></i></a></li>
-                        <li class="social-item"><a class="social-link" href="#"><i class="ti-google" aria-hidden="true"></i></a></li>
-                        <li class="social-item"><a class="social-link" href="#"><i class="ti-instagram" aria-hidden="true"></i></a></li>
-                        <li class="social-item"><a class="social-link" href="#"><i class="ti-github" aria-hidden="true"></i></a></li>
-                    </ul>  
+                  
                 </div>
                 <div class="col-lg-4 about-card">
-                    <h3 class="font-weight-light">My Expertise</h3>
-                    <span class="line mb-5"></span>
-                    <div class="row">
-                        <div class="col-1 text-danger pt-1"><i class="ti-widget icon-lg"></i></div>
-                        <div class="col-10 ml-auto mr-3">
-                            <h6>UX Design</h6>
-                            <p class="subtitle"> exercitat Repellendus,  corrupt.</p>
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1 text-danger pt-1"><i class="ti-paint-bucket icon-lg"></i></div>
-                        <div class="col-10 ml-auto mr-3">
-                            <h6>Web Development</h6>
-                            <p class="subtitle">Lorem ipsum dolor sit consectetur.</p>
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-1 text-danger pt-1"><i class="ti-stats-up icon-lg"></i></div>
-                        <div class="col-10 ml-auto mr-3">
-                            <h6>Digital Marketing</h6>
-                            <p class="subtitle">voluptate commodi illo voluptatib.</p>
-                            <hr>
-                        </div>
-                    </div>
+                <ul class="social-icons pt-3">
+                <li class="social-item"><a class="social-link" href="#"><i class="ti-facebook" aria-hidden="true"></i></a></li>
+                <li class="social-item"><a class="social-link" href="#"><i class="ti-twitter" aria-hidden="true"></i></a></li>
+                <li class="social-item"><a class="social-link" href="#"><i class="ti-google" aria-hidden="true"></i></a></li>
+                <li class="social-item"><a class="social-link" href="#"><i class="ti-instagram" aria-hidden="true"></i></a></li>
+                <li class="social-item"><a class="social-link" href="#"><i class="ti-github" aria-hidden="true"></i></a></li>
+            </ul> 
+                  
+                  
                 </div>
             </div>
         </div>
@@ -145,22 +121,25 @@ if (profileId) {
                         <div class="card">
                            <div class="card-header">
                                 <div class="mt-2">
-                                    <h4>Expertise</h4>
+                                    <h4>Experience</h4>
                                     <span class="line"></span>  
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h6 class="title text-danger">2017 - Present</h6>
-                                <P>UX Developer</P>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum recusandae, cupiditate ullam dolor ratione repellendus.aliquid repudiandae saepe!.</P>
-                                <hr>
-                                <h6 class="title text-danger">2016 - 2017</h6>
-                                <P>Front-end Developer</P>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum recusandae, cupiditate ullam dolor ratione repellendus.aliquid repudiandae saepe!.</P>
-                                <hr>
-                                <h6 class="title text-danger">2015 - 2016</h6>
-                                <P>UX Designer</P>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum recusandae, cupiditate ullam dolor ratione repellendus.aliquid repudiandae saepe!.</P>
+                            ${res?.experiences
+                                ?.map((data) => {
+                                  return `
+                                  <h6 class="title text-danger">${data?.company_name}</h6>
+                                  <h6 class="title text-danger">${data?.start_date} - ${
+                                    data?.is_current ? "Present" : data?.end_date
+                                  }</h6>
+                                  <P>${data?.designation}</P>
+                                  <P class="subtitle">${data?.description}</P>
+                                  <hr>
+                                    `;
+                                })
+                                .join("")}    
+                          
                             </div>
                         </div>
                     </div>
@@ -173,18 +152,21 @@ if (profileId) {
                                 </div>
                             </div>
                             <div class="card-body">
-                                <h6 class="title text-danger">2017 - Present</h6>
-                                <P>B.E Computer Engineering</P>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error corrupti recusandae obcaecati odit repellat ducimus cum, minus tempora aperiam at.</P>
-                                <hr>
-                                <h6 class="title text-danger">2016 - 2017</h6>
-                                <P>Diploma in Computer Engineering</P>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, id officiis quas placeat quia voluptas dolorum rem animi nostrum quae.aliquid repudiandae saepe!.</P>
-                                <hr>
-                                <h6 class="title text-danger">2015 - 2016</h6>
-                                <P>High School Degree</P>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum recusandae, cupiditate ullam dolor ratione repellendus.aliquid repudiandae saepe!.</P>
-                                
+                            ${res?.eductaions
+                                ?.map((data) => {
+                                  return `
+                                  <h6 class="title text-danger">${data?.university}</h6>
+
+                                  <h6 class="title text-danger">${data?.start_date} - ${
+                                    data?.is_current ? "Currently Studying" : data?.end_date
+                                  }</h6>
+                                  <P>${data?.course}</P>
+                                  <P class="subtitle">${data?.description}</P>
+                                  <hr>
+                                     `;
+                                })
+                                .join("")}
+                         
                             </div>
                         </div>
                     </div>
@@ -197,30 +179,25 @@ if (profileId) {
                                 </div>
                             </div>
                             <div class="card-body pb-2">
-                               <h6>hTL5 &amp; CSS3</h6>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 97%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <h6>JavaScript</h6>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <h6>PHP</h6>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <h6>SQL</h6>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <h6>Laborum</h6>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <h6>Tempora</h6>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                            ${res?.skills
+                                ?.map((data) => {
+                                  return `
+                                  <h6>${data?.skill}</h6>
+                                  <div class="progress mb-3">
+                                      <div class="progress-bar bg-danger" role="progressbar" style="width: 97%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" ${
+                                        data?.type == 1
+                                          ? "33%"
+                                          : data?.type == 2
+                                          ? "66%"
+                                          : "100%"
+                                      }"></div>
+                                  </div>
+                  
+                                      `;
+                                })
+                                ?.join("")}
+                             
+                            
                             </div>
                         </div>
                         <!-- <div class="card">
@@ -254,83 +231,38 @@ if (profileId) {
     
         <section class="section" id="service">
             <div class="container">
-                <h2 class="mb-5 pb-4"><span class="text-danger">My</span> Services</h2>
+                <h2 class="mb-5 pb-4"><span class="text-danger">My</span>Projects</h2>
                 <div class="row">
-                    <div class="col-md-4 col-sm-6">
+                ${res?.projects?.map((data)=>{
+                    return(
+                        `
+                        <div class="col-md-4 col-sm-6">
                         <div class="card mb-5">
-                           <div class="card-header has-icon">
-                                <i class="ti-vector text-danger" aria-hidden="true"></i>
-                            </div>
-                            <div class="card-body px-4 py-3">
-                                <h5 class="mb-3 card-title text-dark">Ullam</h5>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam commodi provident, dolores reiciendis enim pariatur error optio, tempora ex, nihil nesciunt! In praesentium sunt commodi, unde ipsam ex veritatis laboriosam dolor asperiores suscipit blanditiis, dignissimos quos nesciunt nulla aperiam officia.</P>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card mb-5">
-                           <div class="card-header has-icon">
-                                <i class="ti-write text-danger" aria-hidden="true"></i>
-                            </div>
-                            <div class="card-body px-4 py-3">
-                                <h5 class="mb-3 card-title text-dark">Asperiores</h5>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam commodi provident, dolores reiciendis enim pariatur error optio, tempora ex, nihil nesciunt! In praesentium sunt commodi, unde ipsam ex veritatis laboriosam dolor asperiores suscipit blanditiis, dignissimos quos nesciunt nulla aperiam officia.</P>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card mb-5">
-                           <div class="card-header has-icon">
-                                <i class="ti-package text-danger" aria-hidden="true"></i>
-                            </div>
-                            <div class="card-body px-4 py-3">
-                                <h5 class="mb-3 card-title text-dark">Tempora</h5>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam commodi provident, dolores reiciendis enim pariatur error optio, tempora ex, nihil nesciunt! In praesentium sunt commodi, unde ipsam ex veritatis laboriosam dolor asperiores suscipit blanditiis, dignissimos quos nesciunt nulla aperiam officia.</P>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card mb-5">
-                           <div class="card-header has-icon">
-                                <i class="ti-map-alt text-danger" aria-hidden="true"></i>
-                            </div>
-                            <div class="card-body px-4 py-3">
-                                <h5 class="mb-3 card-title text-dark">Provident</h5>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam commodi provident, dolores reiciendis enim pariatur error optio, tempora ex, nihil nesciunt! In praesentium sunt commodi, unde ipsam ex veritatis laboriosam dolor asperiores suscipit blanditiis, dignissimos quos nesciunt nulla aperiam officia.</P>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card mb-5">
-                           <div class="card-header has-icon">
-                                <i class="ti-bar-chart text-danger" aria-hidden="true"></i>
-                            </div>
-                            <div class="card-body px-4 py-3">
-                                <h5 class="mb-3 card-title text-dark">Consectetur</h5>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam commodi provident, dolores reiciendis enim pariatur error optio, tempora ex, nihil nesciunt! In praesentium sunt commodi, unde ipsam ex veritatis laboriosam dolor asperiores suscipit blanditiis, dignissimos quos nesciunt nulla aperiam officia.</P>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="card mb-5">
-                           <div class="card-header has-icon">
-                                <i class="ti-support text-danger" aria-hidden="true"></i>
-                            </div>
-                            <div class="card-body px-4 py-3">
-                                <h5 class="mb-3 card-title text-dark">Veritatis</h5>
-                                <P class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam commodi provident, dolores reiciendis enim pariatur error optio, tempora ex, nihil nesciunt! In praesentium sunt commodi, unde ipsam ex veritatis laboriosam dolor asperiores suscipit blanditiis, dignissimos quos nesciunt nulla aperiam officia.</P>
-                            </div>
-                        </div>
-                    </div>
+                       
+                          <div class="card-body px-4 py-3">
+                              <h5 class="mb-3 card-title text-dark">${data?.title}</h5>
+                            <a class="border-bottom border-primary text-decoration-none"href=${data?.link?data?.link:"#"}>Link</a>
+                              
+                              <P class="subtitle">${data?.description}</P>
+                          </div>
+                      </div>
+                        `
+                    )
+                  })?.join("")}
+            
+            </div>
+                  
+                  
+              
+                 
                 </div>
             </div>
         </section>
     
         <footer class="footer py-3">
             <div class="container">
-                <p class="small mb-0 text-light">
-                    &copy; <script>document.write(new Date().getFullYear())</script> Created With <i class="ti-heart text-danger"></i> By <a href="http://devcrud.com" target="_blank"><span class="text-danger" title="Bootstrap 4 Themes and Dashboards">DevCRUD</span></a> 
-                </p>
+            <p class="m-0">&copy; <a class="text-white font-weight-bold" href="#"></a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://www.resumebuild.in/">ResumeBuild</a>
+  
             </div>
         </footer>
           `
