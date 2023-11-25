@@ -21,6 +21,17 @@ if (profileId) {
           
             // Update the HTML with the dynamic content
             let res=item?.data
+            const filteredVideo1 = res?.video_questions?.filter(video => video.question?.id == 25);
+            const educationVideo = res?.video_questions?.filter(video => video.question?.id == 6);
+            const expVideo = res?.video_questions?.filter(video => video.question?.id == 12);
+            const skillVideo = res?.video_questions?.filter(video => video.question?.id == 7);
+            const projectVideo = res?.video_questions?.filter(video => video.question?.id == 16);
+
+
+
+
+            console.log(filteredVideo1)
+        
             const dynamicContent = document.getElementById('dynamic');
             dynamicContent.innerHTML = `  
             <header class="header">
@@ -88,7 +99,15 @@ if (profileId) {
             
                 </div>
                 <div class="col-lg-4 about-card">
-                    <h3 class="font-weight-light">Personal Info</h3>
+                <div class="d-flex justify-content-between">
+                <h3 class="font-weight-light">Personal Info</h3>
+                
+                <button type="button" class="btn-play" data-toggle="modal"
+                data-src=${filteredVideo1[0]?.video} data-target="#videoModal">
+                <span></span>
+            </button>
+                </div>
+             
                     <span class="line mb-5"></span>
                     <ul class="mt40 info list-unstyled">
                         
@@ -98,6 +117,81 @@ if (profileId) {
                     </ul>
                   
                 </div>
+                <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>        
+                            <!-- 16:9 aspect ratio -->
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src=${filteredVideo1[0]?.video} id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="eduModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>        
+                        <!-- 16:9 aspect ratio -->
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src=${educationVideo[0]?.video} id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="expModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>        
+                    <!-- 16:9 aspect ratio -->
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src=${expVideo[0]?.video} id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="proModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>        
+                <!-- 16:9 aspect ratio -->
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src=${projectVideo[0]?.video} id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="skillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>        
+            <!-- 16:9 aspect ratio -->
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src=${skillVideo[0]?.video} id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
                 <div class="col-lg-4 about-card">
                 <ul class="social-icons pt-3">
                 <li class="social-item"><a class="social-link" href="#"><i class="ti-facebook" aria-hidden="true"></i></a></li>
@@ -121,7 +215,15 @@ if (profileId) {
                         <div class="card">
                            <div class="card-header">
                                 <div class="mt-2">
-                                    <h4>Experience</h4>
+                                <div class="d-flex justify-content-between">
+                                <h4>Experience</h4>
+                                <button type="button" class="btn-play" data-toggle="modal"
+                                data-src=${expVideo[0]?.video} data-target="#expModal">
+                                <span></span>
+                            </button>
+                                </div>
+                               
+                          
                                     <span class="line"></span>  
                                 </div>
                             </div>
@@ -147,7 +249,14 @@ if (profileId) {
                         <div class="card">
                            <div class="card-header">
                                 <div class="mt-2">
+                                    <div class="d-flex justify-content-between">
                                     <h4>Education</h4>
+                                    
+                                    <button type="button" class="btn-play" data-toggle="modal"
+                                    data-src=${educationVideo[0]?.video} data-target="#eduModal">
+                                    <span></span>
+                                </button>
+                                    </div>
                                     <span class="line"></span>  
                                 </div>
                             </div>
@@ -174,7 +283,13 @@ if (profileId) {
                         <div class="card">
                            <div class="card-header">
                                 <div class="pull-left">
+                                    <div class="d-flex justify-content-between">
                                     <h4 class="mt-2">Skills</h4>
+                                    <button type="button" class="btn-play" data-toggle="modal"
+                                    data-src=${skillVideo[0]?.video} data-target="#skillModal">
+                                    <span></span>
+                                </button>
+                                    </div>
                                     <span class="line"></span>  
                                 </div>
                             </div>
@@ -231,12 +346,19 @@ if (profileId) {
     
         <section class="section" id="service">
             <div class="container">
-                <h2 class="mb-5 pb-4"><span class="text-danger">My</span>Projects</h2>
+            <div class="d-flex justify-content-between">
+            <h2 class="mb-5 pb-4"><span class="text-danger">My</span>Projects</h2>
+             
+            <button type="button" class="btn-play" data-toggle="modal"
+            data-src=${projectVideo[0]?.video} data-target="#proModal">
+            <span></span>
+        </button>
+            </div>
                 <div class="row">
                 ${res?.projects?.map((data)=>{
                     return(
                         `
-                        <div class="col-md-4 col-sm-6">
+                        <div class="col-md-4 ">
                         <div class="card mb-5">
                        
                           <div class="card-body px-4 py-3">
@@ -246,7 +368,9 @@ if (profileId) {
                               <P class="subtitle">${data?.description}</P>
                           </div>
                       </div>
+                      </div>
                         `
+
                     )
                   })?.join("")}
             

@@ -25,7 +25,7 @@
               dynamicContent.innerHTML = `  
               <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
               <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">${res?.full_name}</span>
+                <span class="d-block d-lg-none">${res?.full_name}  </span>
                 <span class="d-none d-lg-block">
                   <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src=${res?.profile_picture} alt="">
                 </span>
@@ -59,9 +59,16 @@
         
               <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
                 <div class="my-auto">
+                
+                  <div class="d-flex align-items-center justify-content-between ">
                   <h1 class="mb-0">
-                  ${res?.full_name}
+                  ${res?.full_name}   
                   </h1>
+                  <button type="button" class="btn-play" data-toggle="modal"
+                  data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                  <span></span>
+              </button>
+                  </div>
                   <div class="subheading mb-5">${res?.address}·
                     <a href="mailto:name@email.com">${res?.email}</a>
                   </div>
@@ -105,7 +112,13 @@
         
               <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
                 <div class="my-auto">
-                  <h2 class="mb-5">Experience</h2>
+                <div class="d-flex align-items-center justify-content-start mb-5 ">
+                <h2 >Experience</h2>
+                <button type="button" class="btn-play" data-toggle="modal"
+                data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                <span></span>
+            </button>
+                </div>
                   ${res?.experiences
                     ?.map((data) => {
                       return `
@@ -131,7 +144,14 @@
         
               <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
                 <div class="my-auto">
-                  <h2 class="mb-5">Education</h2>
+                  <div class="d-flex align-items-center justify-content-start mb-5 ">
+                  <h2 >Education</h2>
+                
+                  <button type="button" class="btn-play" data-toggle="modal"
+                  data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                  <span></span>
+              </button>
+                  </div>
                   ${res?.eductaions
                     ?.map((data) => {
                       return `
@@ -160,7 +180,15 @@
         
               <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
                 <div class="my-auto">
-                  <h2 class="mb-5">Skills</h2>
+                  <div class="d-flex align-items-center justify-content-start mb-5 ">
+                  <h2 >Skills</h2>
+            
+                
+                  <button type="button" class="btn-play" data-toggle="modal"
+                  data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                  <span></span>
+              </button>
+                  </div>
                   <ul class="list-inline list-icons">
                   ${res?.skills
                     ?.map((data) => {
@@ -177,11 +205,31 @@
         
                
               </section>
-        
+              <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <div class="modal-body">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>        
+                          <!-- 16:9 aspect ratio -->
+                          <div class="embed-responsive embed-responsive-16by9">
+                              <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=8FkLRUJj-o0" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
           
               <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="projects">
               <div class="my-auto">
-                <h2 class="mb-5">Projects</h2>
+                <div class="d-flex align-items-center justify-content-start mb-5 ">
+                <h2>Projects</h2>    
+                <button type="button" class="btn-play" data-toggle="modal"
+                data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                <span></span>
+            </button>
+                </div>
                 ${res?.projects
                   ?.map((data) => {
                     return `

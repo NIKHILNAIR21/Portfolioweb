@@ -77,14 +77,14 @@ if (profileId) {
                             <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">${res?.full_name}</h1>
                             <h1 class="typed-text-output d-inline font-weight-lighter text-white">${res?.position}</h1>
                             
-                            <!-- <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
+                             <div class="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
                             
                                 <button type="button" class="btn-play" data-toggle="modal"
                                     data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
                                     <span></span>
                                 </button>
                                 <h5 class="font-weight-normal text-white m-0 ml-4 d-none d-sm-block">Play Video</h5>
-                            </div> -->
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -98,13 +98,17 @@ if (profileId) {
                     <div class="position-relative d-flex align-items-center justify-content-center">
                         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
                         <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
+                    
                     </div>
                     <div class="row align-items-center">
                         <div class="col-lg-5 pb-4 pb-lg-0">
                             <img class="img-fluid rounded w-100" src=${res?.profile_picture} alt="">
                         </div>
+                        
                         <div class="col-lg-7">
-                            <h3 class="mb-4">${res?.position}</h3>
+                        <h3 class="mb-4">${res?.position}</h3>
+                   
+                         
                             <p>${res?.summary}</p>
                             <div class="row mb-3">
                                 <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">${res?.full_name}</span></h6></div>
@@ -130,7 +134,15 @@ if (profileId) {
                     </div>
                     <div class="row align-items-center">
                         <div class="col-lg-6">
-                            <h3 class="mb-4">My Education</h3>
+                            <div class="d-flex justify-content-between">
+                            <h3 class="mb-4 me-2">My Education</h3>
+                            
+                            <button type="button" class="btn-play " data-toggle="modal"
+                                data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                                <span></span>
+                            </button>
+                           
+                        </div>
                             <div class="border-left border-primary pt-2 pl-4 ml-2">
                               
                             ${res?.eductaions
@@ -152,7 +164,16 @@ if (profileId) {
                             </div>
                         </div>
                         <div class="col-lg-6">
+                            <div class="d-flex justify-content-between">
                             <h3 class="mb-4">My Expericence</h3>
+                            
+                            
+                            <button type="button" class="btn-play " data-toggle="modal"
+                                data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                                <span></span>
+                            </button>
+                           
+                        </div>
                             <div class="border-left border-primary pt-2 pl-4 ml-2">
                             ${res?.experiences
                                 ?.map((data) => {
@@ -184,9 +205,20 @@ if (profileId) {
                 <div class="container">
                     <div class="position-relative d-flex align-items-center justify-content-center">
                         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Skills</h1>
-                        <h1 class="position-absolute text-uppercase text-primary">My Skills</h1>
+                
+                        <h1 class="position-absolute text-uppercase text-primary">My Skills 
+                        </h1>
                     </div>
+                     
+                    <div class="d-flex align-items-center justify-content-center ">
+                    <button type="button" class="btn-play" data-toggle="modal"
+                    data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                    <span></span>
+                </button>
+                    </div>
+                 
                     <div class="row align-items-center">
+                    
                     ${res?.skills
                         ?.map((data) => {
                           return `
@@ -221,13 +253,33 @@ if (profileId) {
             </div>
             <!-- Skill End -->
         
-        
+            <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>        
+                            <!-- 16:9 aspect ratio -->
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=8FkLRUJj-o0" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Services Start -->
             <div class="container-fluid pt-5" id="service">
                 <div class="container">
                     <div class="position-relative d-flex align-items-center justify-content-center">
                         <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Projects</h1>
                         <h1 class="position-absolute text-uppercase text-primary">My Projects</h1>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center ">
+                    <button type="button" class="btn-play" data-toggle="modal"
+                    data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+                    <span></span>
+                </button>
                     </div>
                     <div class="row pb-3">
                     ${res?.projects?.map((data)=>{
