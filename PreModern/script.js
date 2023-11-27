@@ -27,21 +27,57 @@ if (profileId) {
             const skillVideo = res?.video_questions?.filter(video => video.question?.id == 7);
             const projectVideo = res?.video_questions?.filter(video => video.question?.id == 16);
 
+          let projectButton=  projectVideo?.video ? ` <button type="button" class="btn-play" data-toggle="modal"
+            data-src=${projectVideo[0]?.video} data-target="#proModal">
+            <span></span>
+        </button>`:""
+
+        let profileButton= filteredVideo1[0]?.video? `  <button type="button" class="btn-play" data-toggle="modal"
+        data-src=${filteredVideo1[0]?.video} data-target="#videoModal">
+        <span></span>
+    </button>`:""
+
+    let expButton= expVideo[0]?.video ?  `   <button type="button" class="btn-play" data-toggle="modal"
+    data-src=${expVideo[0]?.video} data-target="#expModal">
+    <span></span>
+</button>`:""
+
+let eduButton=  educationVideo[0]?.video ?  `      <button type="button" class="btn-play" data-toggle="modal"
+data-src=${educationVideo[0]?.video} data-target="#eduModal">
+<span></span>
+</button>`:""
+
+let skillButton=  skillVideo[0]?.video?`<button type="button" class="btn-play" data-toggle="modal"
+data-src=${skillVideo[0]?.video} data-target="#skillModal">
+<span></span>
+</button>`:""
 
 
-
-            console.log(filteredVideo1)
+let socialIcon = "";
+res?.social_links.forEach((item) => {
+  if (item?.name === "LinkedIn") {
+    socialIcon += `
+          <li class="social-item"><a  class="social-link" href=${item?.link}><i class="ti-linkedin"></i></a></li>
+        `;
+  }
+  if (item?.name === "Twitter") {
+    socialIcon += `
+          <li class="social-item"><a  class="social-link" href=${item?.link}><i class="ti-twitter"></i></a></li>
+        `;
+  }
+  if (item?.name === "GitHub") {
+    socialIcon += `
+          <li class="social-item"><a  class="social-link" href=${item?.link}><i class="ti-github"></i></a></li>
+        `;
+  }
+});
         
             const dynamicContent = document.getElementById('dynamic');
             dynamicContent.innerHTML = `  
             <header class="header">
             <div class="container">
                 <ul class="social-icons pt-3">
-                    <li class="social-item"><a class="social-link text-light" href="#"><i class="ti-facebook" aria-hidden="true"></i></a></li>
-                    <li class="social-item"><a class="social-link text-light" href="#"><i class="ti-twitter" aria-hidden="true"></i></a></li>
-                    <li class="social-item"><a class="social-link text-light" href="#"><i class="ti-google" aria-hidden="true"></i></a></li>
-                    <li class="social-item"><a class="social-link text-light" href="#"><i class="ti-instagram" aria-hidden="true"></i></a></li>
-                    <li class="social-item"><a class="social-link text-light" href="#"><i class="ti-github" aria-hidden="true"></i></a></li>
+${socialIcon}
                 </ul>  
                 <div class="header-content">
                     <h4 class="header-subtitle" >Hello, I am</h4>
@@ -102,10 +138,7 @@ if (profileId) {
                 <div class="d-flex justify-content-between">
                 <h3 class="font-weight-light">Personal Info</h3>
                 
-                <button type="button" class="btn-play" data-toggle="modal"
-                data-src=${filteredVideo1[0]?.video} data-target="#videoModal">
-                <span></span>
-            </button>
+              ${profileButton}
                 </div>
              
                     <span class="line mb-5"></span>
@@ -194,11 +227,7 @@ if (profileId) {
 </div>
                 <div class="col-lg-4 about-card">
                 <ul class="social-icons pt-3">
-                <li class="social-item"><a class="social-link" href="#"><i class="ti-facebook" aria-hidden="true"></i></a></li>
-                <li class="social-item"><a class="social-link" href="#"><i class="ti-twitter" aria-hidden="true"></i></a></li>
-                <li class="social-item"><a class="social-link" href="#"><i class="ti-google" aria-hidden="true"></i></a></li>
-                <li class="social-item"><a class="social-link" href="#"><i class="ti-instagram" aria-hidden="true"></i></a></li>
-                <li class="social-item"><a class="social-link" href="#"><i class="ti-github" aria-hidden="true"></i></a></li>
+${socialIcon}
             </ul> 
                   
                   
@@ -217,10 +246,7 @@ if (profileId) {
                                 <div class="mt-2">
                                 <div class="d-flex justify-content-between">
                                 <h4>Experience</h4>
-                                <button type="button" class="btn-play" data-toggle="modal"
-                                data-src=${expVideo[0]?.video} data-target="#expModal">
-                                <span></span>
-                            </button>
+                             ${expButton}
                                 </div>
                                
                           
@@ -252,10 +278,7 @@ if (profileId) {
                                     <div class="d-flex justify-content-between">
                                     <h4>Education</h4>
                                     
-                                    <button type="button" class="btn-play" data-toggle="modal"
-                                    data-src=${educationVideo[0]?.video} data-target="#eduModal">
-                                    <span></span>
-                                </button>
+                              ${eduButton}
                                     </div>
                                     <span class="line"></span>  
                                 </div>
@@ -285,10 +308,7 @@ if (profileId) {
                                 <div class="pull-left">
                                     <div class="d-flex justify-content-between">
                                     <h4 class="mt-2">Skills</h4>
-                                    <button type="button" class="btn-play" data-toggle="modal"
-                                    data-src=${skillVideo[0]?.video} data-target="#skillModal">
-                                    <span></span>
-                                </button>
+                                  ${skillButton}
                                     </div>
                                     <span class="line"></span>  
                                 </div>
@@ -348,11 +368,8 @@ if (profileId) {
             <div class="container">
             <div class="d-flex justify-content-between">
             <h2 class="mb-5 pb-4"><span class="text-danger">My</span>Projects</h2>
-             
-            <button type="button" class="btn-play" data-toggle="modal"
-            data-src=${projectVideo[0]?.video} data-target="#proModal">
-            <span></span>
-        </button>
+         ${projectButton}
+           
             </div>
                 <div class="row">
                 ${res?.projects?.map((data)=>{
