@@ -334,14 +334,18 @@ data-src=${skillVideo[0]?.video} data-target="#skillModal">
                 <ul class="social-icons pt-3">
 ${socialIcon}
                 </ul>  
-                <div class="header-content">
-                    <h4 class="header-subtitle" >Hello, I am</h4>
-                    <h1 class="header-title">${
-                      res?.full_name ? res?.full_name : "John Doe"
-                    }</h1>
-                    <h6 class="header-mono" >${
-                      res?.position ? res?.position : "Software Developer"
-                    }</h6>
+                <div class="header-content d-flex justify-content-between">
+                <div>
+                <h4 class="header-subtitle" >Hello, I am</h4>
+                <h1 class="header-title">${
+                  res?.full_name ? res?.full_name : "John Doe"
+                }</h1>
+                <h6 class="header-mono" >${
+                  res?.position ? res?.position : "Software Developer"
+                }</h6>
+                </div>
+                <img src=${res?.profile_picture?res?.profile_picture:"../public_html/assets/imgs/avatar.jpg"} style="width: 250px"></img>
+                  
                     
                 </div>
             </div>
