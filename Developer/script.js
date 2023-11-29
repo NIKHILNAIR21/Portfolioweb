@@ -302,6 +302,244 @@ if (profileId) {
     .then((item) => {
       // Update the HTML with the dynamic content
       let res = item?.data;
+      const filteredVideo1 = res?.video_questions?.filter(
+        (video) => video.question?.id == 25
+      );
+      const educationVideo = res?.video_questions?.filter(
+        (video) => video.question?.id == 6
+      );
+      const expVideo = res?.video_questions?.filter(
+        (video) => video.question?.id == 12
+      );
+      const skillVideo = res?.video_questions?.filter(
+        (video) => video.question?.id == 7
+      );
+      const projectVideo = res?.video_questions?.filter(
+        (video) => video.question?.id == 16
+      );
+
+      let projectButton = projectVideo?.video
+        ? ` <button type="button" class="btn-play" data-toggle="modal"
+            data-src=${projectVideo[0]?.video} data-target="#proModal">
+            <span></span>
+        </button>`
+        : "";
+
+      let profileButton = filteredVideo1[0]?.video
+        ? `  <button type="button" class="btn-play" data-toggle="modal"
+        data-src=${filteredVideo1[0]?.video} data-target="#videoModal">
+        <span></span>
+    </button>`
+        : "";
+
+      let expButton = expVideo[0]?.video
+        ? `   <button type="button" class="btn-play" data-toggle="modal"
+    data-src=${expVideo[0]?.video} data-target="#expModal">
+    <span></span>
+</button>`
+        : "";
+
+      let eduButton = educationVideo[0]?.video
+        ? `      <button type="button" class="btn-play" data-toggle="modal"
+data-src=${educationVideo[0]?.video} data-target="#eduModal">
+<span></span>
+</button>`
+        : "";
+
+      let skillButton = skillVideo[0]?.video
+        ? `<button type="button" class="btn-play" data-toggle="modal"
+data-src=${skillVideo[0]?.video} data-target="#skillModal">
+<span></span>
+</button>`
+        : "";
+      let socialIcon = "";
+      res?.social_links.forEach((item) => {
+        if (item?.name === "LinkedIn") {
+          socialIcon += `
+        <a  class="social-link" href=${item?.link}><i class='bx bxl-linkedin'></i></a>
+        `;
+        }
+        if (item?.name === "Twitter") {
+          socialIcon += `
+          <a  class="social-link" href=${item?.link}><i class='bx bxl-twitter'></i></a>
+        `;
+        }
+        if (item?.name === "GitHub") {
+          socialIcon += `
+          <a  class="social-link" href=${item?.link}><i class='bx bxl-github'></i></a>
+        `;
+        }
+      });
+      let skillSection =
+        res?.skills?.length !== 0
+          ? `<section id="skills" class="skills section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+        <div class="d-flex justify-content-center">
+        <h2 class="me-3 mt-1">Skills</h2>
+        
+        
+  ${skillButton}
+        </div>
+        </div>
+
+        <div class="row skills-content">
+
+
+        ${res?.skills
+          ?.map((data) => {
+            return `
+            <div class="col-lg-6">
+
+                <div class="progress">
+                <span class="skill">${data?.skill}<i class="val"></i></span>
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="90" style="width: ${
+                    data?.type == 1 ? "33%" : data?.type == 2 ? "66%" : "100%"
+                  }" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+
+                `;
+          })
+          ?.join("")}
+
+
+        </div>
+
+      </div>
+    </section>`
+          : "";
+
+      let educationSection =
+        res?.eductaions?.length !== 0
+          ? `  <div class="col-lg-6">
+            
+      
+    <div class="d-flex justify-content-start">
+  
+    <h3 class="resume-title me-3">Education</h3>
+
+    
+    
+${eduButton}
+    </div>
+   ${res?.eductaions
+     ?.map((data) => {
+       return `
+          <div class="resume-item">
+          <h4>${data?.course}</h4>
+          <h5>${data?.start_date} - ${
+         data?.is_current ? "Currently Studying" : data?.end_date
+       }</h5>
+          <p><em>${data?.university}</em></p>
+          <p>${data?.description}</p>
+        </div>
+          `;
+     })
+     .join("")}
+   
+  </div>`
+          : "";
+
+      let experienceSection =
+        res?.experiences?.length !== 0
+          ? `<div class="col-lg-6">
+  <div class="d-flex justify-content-start">
+  
+  <h3 class="resume-title me-3">Professional Experience</h3>
+  
+
+  
+  
+${expButton}
+  </div>
+  ${res?.experiences
+    ?.map((data) => {
+      return `
+        <div class="resume-item">
+        <h4>${data?.designation}</h4>
+        <h5>${data?.start_date} - ${
+        data?.is_current ? "Present" : data?.end_date
+      }
+      </h5>
+        
+   <p>${data?.description}</p>
+      </div>
+        `;
+    })
+    .join("")}
+
+ 
+</div>`
+          : "";
+
+      let resumeSection =
+        res?.eductaions?.length !== 0 && res?.experiences?.length !== 0
+          ? `    <section id="resume" class="resume">
+<div class="container" data-aos="fade-up">
+
+  <div class="section-title">
+    <h2>Resume</h2>
+  </div>
+
+  <div class="row">
+  ${educationSection}
+${experienceSection}
+  </div>
+
+</div>
+</section>`
+          : "";
+
+      let projectSection =
+        res?.projects?.length !== 0
+          ? ` <section id="portfolio" class="portfolio section-bg">
+<div class="container" data-aos="fade-up">
+
+  <div class="section-title">
+    <div class="d-flex justify-content-center">
+    <h2 class="me-3 mb-1">Projects</h2>  
+  ${projectButton}
+    </div>
+  </div>
+  <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+  ${res?.projects
+    ?.map((data) => {
+      return `
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+          <div class="card">
+          <div class="card-body">
+           <h5 class="card-title">${data?.title}</h5>
+    
+         <p class="card-text">${data?.description}</p>
+    
+          </div>
+          </div>
+        
+          <div class="portfolio-info">
+          <div class="portfolio-links">
+
+            <a href=${
+              data?.link ? data?.link : "#"
+            } class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+          </div>
+          </div>
+        </div>
+        </div>
+        `;
+    })
+    ?.join("")}
+  </div>
+</div>
+  </div>
+
+</div>
+</section>`
+          : "";
       const dynamicContent = document.getElementById("dynamic-content");
       dynamicContent.innerHTML = `     
         <i class="bi bi-list mobile-nav-toggle d-lg-none"></i>
@@ -322,21 +560,17 @@ if (profileId) {
         <!-- ======= Hero Section ======= -->
         <section id="hero" class="d-flex flex-column justify-content-center" >
           <div class="container" data-aos="zoom-in" data-aos-delay="100">
-            <h1>${res?.full_name}</h1>
-            <p>I'm <span class="typed" >${res?.position}</span></p>
+            <h1>${res?.full_name ? res?.full_name : "John Deo"}</h1>
+            <p>I'm <span class="typed" >${
+              res?.position ? res?.position : "Software Developer"
+            }</span></p>
             <div class="social-links">
-            ${res?.social_links?.map((data)=>{
-                return(
-                    `
-              <a href=${data?.link} class="twitter">${data?.name}</i></a>
-                    
-                    `
-                )
-            })?.join("")}
+        ${socialIcon}
             
             </div>
           </div>
         </section><!-- End Hero -->
+
       
         <main id="main">
       
@@ -345,16 +579,27 @@ if (profileId) {
             <div class="container" data-aos="fade-up">
       
               <div class="section-title">
-                <h2>About</h2>
+              <div class="d-flex justify-content-center">
+              <h2 class="me-3 mt-1">About</h2>
+              
+              
+        ${profileButton}
+              </div>
                 <p>${res?.summary}</p>
               </div>
       
               <div class="row">
                 <div class="col-lg-4">
-                  <img src=${res?.profile_picture} class="img-fluid" alt="">
+                  <img src=${
+                    res?.profile_picture
+                      ? res?.profile_picture
+                      : "assets/img/Dummy.png"
+                  } class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-8 pt-4 pt-lg-0 content">
-                  <h3>${res?.position}.</h3>
+                  <h3>${
+                    res?.position ? res?.position : "Software Developer"
+                  }.</h3>
                  
                   <div class="row">
                     <div class="col-lg-6">
@@ -362,17 +607,17 @@ if (profileId) {
         
                         
                         <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>${
-                          res?.mobile_no
+                          res?.mobile_no ? res?.mobile_no : "+1234567890"
                         }</span></li>
                         <li><i class="bi bi-chevron-right"></i> <strong>Address:</strong> <span>${
-                          res?.address
+                          res?.address ? res?.address : "XYZ Street"
                         }</span></li>
                       </ul>
                     </div>
                     <div class="col-lg-6">
                       <ul>
                         <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>${
-                          res?.email
+                          res?.email ? res?.email : "johndoe@gmail.com"
                         }</span></li>
                         
                       </ul>
@@ -385,6 +630,91 @@ if (profileId) {
             </div>
           </section><!-- End About Section -->
       
+          <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                 <div class="modal-body">
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">&times;</span>
+                     </button>        
+                     <!-- 16:9 aspect ratio -->
+                     <div class="embed-responsive embed-responsive-16by9">
+                         <iframe class="embed-responsive-item" src=${
+                           filteredVideo1[0]?.video
+                         } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="modal fade" id="eduModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-body">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>        
+                 <!-- 16:9 aspect ratio -->
+                 <div class="embed-responsive embed-responsive-16by9">
+                     <iframe class="embed-responsive-item" src=${
+                       educationVideo[0]?.video
+                     } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div class="modal fade" id="expModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog" role="document">
+     <div class="modal-content">
+         <div class="modal-body">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+             </button>        
+             <!-- 16:9 aspect ratio -->
+             <div class="embed-responsive embed-responsive-16by9">
+                 <iframe class="embed-responsive-item" src=${
+                   expVideo[0]?.video
+                 } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+             </div>
+         </div>
+     </div>
+ </div>
+</div>
+<div class="modal fade" id="proModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+ <div class="modal-content">
+     <div class="modal-body">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+         </button>        
+         <!-- 16:9 aspect ratio -->
+         <div class="embed-responsive embed-responsive-16by9">
+             <iframe class="embed-responsive-item" src=${
+               projectVideo[0]?.video
+             } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+         </div>
+     </div>
+ </div>
+</div>
+</div>
+<div class="modal fade" id="skillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+ <div class="modal-body">
+     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+     </button>        
+     <!-- 16:9 aspect ratio -->
+     <div class="embed-responsive embed-responsive-16by9">
+         <iframe class="embed-responsive-item" src=${
+           skillVideo[0]?.video
+         } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+     </div>
+ </div>
+</div>
+</div>
+</div>
           <!-- ======= Facts Section ======= -->
           <section id="facts" class="facts">
             <div class="container" data-aos="fade-up">
@@ -433,136 +763,16 @@ if (profileId) {
           </section><!-- End Facts Section -->
       
           <!-- ======= Skills Section ======= -->
-          <section id="skills" class="skills section-bg">
-            <div class="container" data-aos="fade-up">
-      
-              <div class="section-title">
-                <h2>Skills</h2>
-              </div>
-      
-              <div class="row skills-content">
-      
-      
-              ${res?.skills
-                ?.map((data) => {
-                  return `
-                  <div class="col-lg-6">
-
-                      <div class="progress">
-                      <span class="skill">${data?.skill}<i class="val"></i></span>
-                      <div class="progress-bar-wrap">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="90" style="width: ${
-                          data?.type == 1
-                            ? "33%"
-                            : data?.type == 2
-                            ? "66%"
-                            : "100%"
-                        }" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                      `;
-                })
-                ?.join("")}
-      
-      
-              </div>
-      
-            </div>
-          </section><!-- End Skills Section -->
+          ${skillSection}
+          <!-- End Skills Section -->
       
           <!-- ======= Resume Section ======= -->
-          <section id="resume" class="resume">
-            <div class="container" data-aos="fade-up">
-      
-              <div class="section-title">
-                <h2>Resume</h2>
-              </div>
-      
-              <div class="row">
-                <div class="col-lg-6">
-            
-      
-                  <h3 class="resume-title">Education</h3>
-                 ${res?.eductaions
-                   ?.map((data) => {
-                     return `
-                        <div class="resume-item">
-                        <h4>${data?.course}</h4>
-                        <h5>${data?.start_date} - ${
-                       data?.is_current ? "Currently Studying" : data?.end_date
-                     }</h5>
-                        <p><em>${data?.university}</em></p>
-                        <p>${data?.description}</p>
-                      </div>
-                        `;
-                   })
-                   .join("")}
-                 
-                </div>
-                <div class="col-lg-6">
-                  <h3 class="resume-title">Professional Experience</h3>
-                  ${res?.experiences
-                    ?.map((data) => {
-                      return `
-                        <div class="resume-item">
-                        <h4>${data?.designation}</h4>
-                        <h5>${data?.start_date} - ${
-                        data?.is_current ? "Present" : data?.end_date
-                      }
-                      </h5>
-                        
-                <p>${data?.description}</p>
-                      </div>
-                        `;
-                    })
-                    .join("")}
-                
-                 
-                </div>
-              </div>
-      
-            </div>
-          </section><!-- End Resume Section -->
+      ${resumeSection}
+          <!-- End Resume Section -->
       
           <!-- ======= Portfolio Section ======= -->
-          <section id="portfolio" class="portfolio section-bg">
-            <div class="container" data-aos="fade-up">
-      
-              <div class="section-title">
-                <h2>Projects</h2>
-              </div>
-              <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-              ${res?.projects?.map((data)=>{
-                return(
-                    `
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                    <div class="portfolio-wrap">
-                     <div class="card">
-                     <div class="card-body">
-                     <h5 class="card-title">${data?.title}</h5>
-                
-                     <p class="card-text">${data?.description}</p>
-                
-                    </div>
-                    </div>
-                    
-                    <div class="portfolio-info">
-                      <div class="portfolio-links">
-
-                        <a href=${data?.link?data?.link:"#"} class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                      </div>
-                    </div>
-                    `
-                )
-              })?.join("")}
-              </div>
-            </div>
-              </div>
-      
-            </div>
-          </section><!-- End Portfolio Section -->
+         ${projectSection}
+          <!-- End Portfolio Section -->
       
         </main><!-- End #main -->
       
