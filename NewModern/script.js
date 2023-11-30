@@ -25,6 +25,57 @@ if (profileId) {
     .then((item) => {
       // Update the HTML with the dynamic content
       let res = item?.data;
+      const filteredVideo1 = res?.video_questions?.filter(
+        (video) => video.question?.id == 25
+      );
+      const educationVideo = res?.video_questions?.filter(
+        (video) => video.question?.id == 6
+      );
+      const expVideo = res?.video_questions?.filter(
+        (video) => video.question?.id == 12
+      );
+      const skillVideo = res?.video_questions?.filter(
+        (video) => video.question?.id == 7
+      );
+      const projectVideo = res?.video_questions?.filter(
+        (video) => video.question?.id == 16
+      );
+
+      let projectButton = projectVideo?.video
+        ? ` <button type="button" class="btn-play" data-toggle="modal"
+                            data-src=${projectVideo[0]?.video} data-target="#proModal">
+                            <span></span>
+                        </button>`
+        : "";
+
+      let profileButton = filteredVideo1[0]?.video
+        ? `  <button type="button" class="btn-play" data-toggle="modal"
+                        data-src=${filteredVideo1[0]?.video} data-target="#videoModal">
+                        <span></span>
+                    </button>`
+        : "";
+
+      let expButton = expVideo[0]?.video
+        ? `   <button type="button" class="btn-play" data-toggle="modal"
+                    data-src=${expVideo[0]?.video} data-target="#expModal">
+                    <span></span>
+                </button>`
+        : "";
+
+      let eduButton = educationVideo[0]?.video
+        ? `      <button type="button" class="btn-play" data-toggle="modal"
+                data-src=${educationVideo[0]?.video} data-target="#eduModal">
+                <span></span>
+                </button>`
+        : "";
+
+      let skillButton = skillVideo[0]?.video
+        ? `<button type="button" class="btn-play" data-toggle="modal"
+                data-src=${skillVideo[0]?.video} data-target="#skillModal">
+                <span></span>
+                </button>`
+        : "";
+
       let socialIcon = "";
       res?.social_links.forEach((item) => {
         if (item?.name === "LinkedIn") {
@@ -43,6 +94,161 @@ if (profileId) {
               `;
         }
       });
+
+      const skillSection= res?.skills?.length!==0 ?`   <section class="welcome_area p_120" id="skills">
+      <div class="container">
+          <div class="welcome_text">
+          <div class="d-flex">
+          <h4 class="me-3 mt-2">Skills</h4>
+          ${skillButton}
+          </div>
+              
+          </div>
+          <div class="row welcome_inner">
+          ${res?.skills
+            ?.map((data) => {
+              return `
+                <div class="col-lg-6">
+                  
+                <div class="tools_expert">
+                    <div class="skill_main">
+                        <div class="skill_item">
+                            <h4>${data?.skill}
+                            <div class="progress_br">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
+                                    style="width: ${
+                                      data?.type == 1
+                                        ? "33%"
+                                        : data?.type == 2
+                                        ? "66%"
+                                        : "100%"
+                                    }"
+                                    ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                    `;
+            })
+            ?.join("")}
+            
+          </div>
+      </div>
+  </section>`:""
+
+  let resumeSection= res?.eductaions?.length!==0 || res?.experiences?.length!==0  ?` <section class="mytabs_area p_120" id="resume">
+  <div class="container">
+      <div class="tabs_inner">
+      <div class="d-flex justify-content-center">
+      ${expButton}
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Experiences</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Education</a>
+          </li>
+      </ul>
+  ${eduButton}
+      </div>
+    
+
+          <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <ul class="list">
+                  ${res?.experiences
+                      ?.map((data) => {
+                        return `
+                        <li>
+                        <span></span>
+                        <div class="media">
+                            <div class="d-flex">
+                                <p>${data?.start_date} to ${data?.is_current ? "Present":data?.end_date}</p>
+                            </div>
+                            <div class="media-body">
+                                <h4>${data?.company_name}</h4>
+                                <p>${data?.designation}</p>
+                            </div>
+                        </div>
+                    </li>
+                          `;
+                      })
+                      .join("")}
+                    
+                     
+                    
+                  </ul>
+              </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                  <ul class="list">
+                  ${res?.eductaions
+                      ?.map((data) => {
+                        return `  
+                        <li>
+                        <span></span>
+                        <div class="media">
+                            <div class="d-flex">
+                                <p>${data?.start_date} to ${
+                                  data?.is_current ? "Currently Studying" : data?.end_date
+                                }</p>
+                            </div>
+                            <div class="media-body">
+                                <h4>${data?.university}</h4>
+                                <p>${data?.course} <br />
+                                ${data?.description}
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                      `;
+                      })
+                      ?.join("")}
+                   
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>`:""
+
+let projectSection= res?.projects?.length!==0? `<section class="feature_area p_120" id="projects">
+<div class="container">
+    <div class="main_title">
+    <div class="d-flex justify-content-center">
+    <h2 class="me-3 mt-2">Projects</h2>
+    ${projectButton}
+    </div>
+    </div>
+    <div class="feature_inner row">
+    ${res?.projects?.map((data)=>{
+        return(
+            `
+            <div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
+            <div class="h_gallery_item">
+                <div class="g_img_item">
+                    <div class="feature_item">
+
+                    
+                        <h4>${data?.title}</h4>
+                        <p>${data?.description}</p>
+                    </div>
+                    <a class="light" href=${data?.link?data?.link:"#"}><img src="img/gallery/icon.png" alt=""></a>
+                </div>
+            
+            </div>
+        </div>
+            `
+        )
+      })?.join("")}
+       
+        
+    </div>
+</div>
+</section>`:""
       const dynamicContent = document.getElementById("dynamic-content");
 
       dynamicContent.innerHTML = `     
@@ -91,7 +297,10 @@ if (profileId) {
                         <div class="media-body" id="about">
                             <div class="personal_text">
                                 <h6>Hello Everybody, i am</h6>
+                                <div class="d-flex">
                                 <h3>${res?.full_name}</h3>
+                                ${profileButton}
+                                </div>
                                 <h4>${res?.position}</h4>
                                 <p>${res?.summary}</p>
                                 <ul class="list basic_info">
@@ -120,152 +329,15 @@ if (profileId) {
     <!--================End Home Banner Area =================-->
     
     <!--================Welcome Area =================-->
-    <section class="welcome_area p_120" id="skills">
-        <div class="container">
-            <div class="welcome_text">
-                <h4>Skills</h4>
-                
-            </div>
-            <div class="row welcome_inner">
-            ${res?.skills
-              ?.map((data) => {
-                return `
-                  <div class="col-lg-6">
-                    
-                  <div class="tools_expert">
-                      <div class="skill_main">
-                          <div class="skill_item">
-                              <h4>${data?.skill}
-                              <div class="progress_br">
-                                  <div class="progress">
-                                      <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
-                                      style="width: ${
-                                        data?.type == 1
-                                          ? "33%"
-                                          : data?.type == 2
-                                          ? "66%"
-                                          : "100%"
-                                      }"
-                                      ></div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-  
-                      `;
-              })
-              ?.join("")}
-              
-            </div>
-        </div>
-    </section>
+ ${skillSection}
     <!--================End Welcome Area =================-->
     
     <!--================My Tabs Area =================-->
-    <section class="mytabs_area p_120" id="resume">
-        <div class="container">
-            <div class="tabs_inner">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">My Experiences</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">My Education</a>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <ul class="list">
-                        ${res?.experiences
-                            ?.map((data) => {
-                              return `
-                              <li>
-                              <span></span>
-                              <div class="media">
-                                  <div class="d-flex">
-                                      <p>${data?.start_date} to ${data?.is_current ? "Present":data?.end_date}</p>
-                                  </div>
-                                  <div class="media-body">
-                                      <h4>${data?.company_name}</h4>
-                                      <p>${data?.designation}</p>
-                                  </div>
-                              </div>
-                          </li>
-                                `;
-                            })
-                            .join("")}
-                          
-                           
-                          
-                        </ul>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <ul class="list">
-                        ${res?.eductaions
-                            ?.map((data) => {
-                              return `  
-                              <li>
-                              <span></span>
-                              <div class="media">
-                                  <div class="d-flex">
-                                      <p>${data?.start_date} to ${
-                                        data?.is_current ? "Currently Studying" : data?.end_date
-                                      }</p>
-                                  </div>
-                                  <div class="media-body">
-                                      <h4>${data?.university}</h4>
-                                      <p>${data?.course} <br />
-                                      ${data?.description}
-                                      </p>
-                                  </div>
-                              </div>
-                          </li>
-                            `;
-                            })
-                            ?.join("")}
-                         
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+   ${resumeSection}
     <!--================End My Tabs Area =================-->
     
     <!--================Feature Area =================-->
-    <section class="feature_area p_120" id="projects">
-        <div class="container">
-            <div class="main_title">
-                <h2>Projects</h2>
-            </div>
-            <div class="feature_inner row">
-            ${res?.projects?.map((data)=>{
-                return(
-                    `
-                    <div class="col-lg-4 col-md-4 col-sm-6 brand manipul design print">
-                    <div class="h_gallery_item">
-                        <div class="g_img_item">
-                            <div class="feature_item">
-
-                            
-                                <h4>${data?.title}</h4>
-                                <p>${data?.description}</p>
-                            </div>
-                            <a class="light" href=${data?.link?data?.link:"#"}><img src="img/gallery/icon.png" alt=""></a>
-                        </div>
-                    
-                    </div>
-                </div>
-                    `
-                )
-              })?.join("")}
-               
-                
-            </div>
-        </div>
-    </section>
+${projectSection}
     <!--================End Feature Area =================-->
     
     <!--================Home Gallery Area =================-->
