@@ -107,7 +107,7 @@ if (profileId) {
                 </div>
               </div>
                 
-            </div>
+          
                 `;
             })
             ?.join("")}
@@ -276,7 +276,93 @@ ${expSection}
         </div> <!-- End Caption header -->
         <div class="floating-button"><span class="ti-mouse"></span></div>
       </div>
-      
+      <!-- Video Modal Start -->
+      <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+             <div class="modal-body">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>        
+                 <!-- 16:9 aspect ratio -->
+                 <div class="embed-responsive embed-responsive-16by9">
+                     <iframe class="embed-responsive-item" src=${
+                       filteredVideo1[0]?.video
+                     } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+ <div class="modal fade" id="eduModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog" role="document">
+     <div class="modal-content">
+         <div class="modal-body">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span>
+             </button>        
+             <!-- 16:9 aspect ratio -->
+             <div class="embed-responsive embed-responsive-16by9">
+                 <iframe class="embed-responsive-item" src=${
+                   educationVideo[0]?.video
+                 } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+             </div>
+         </div>
+     </div>
+ </div>
+</div>
+<div class="modal fade" id="expModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+ <div class="modal-content">
+     <div class="modal-body">
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+         </button>        
+         <!-- 16:9 aspect ratio -->
+         <div class="embed-responsive embed-responsive-16by9">
+             <iframe class="embed-responsive-item" src=${
+               expVideo[0]?.video
+             } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+         </div>
+     </div>
+ </div>
+</div>
+</div>
+<div class="modal fade" id="proModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+ <div class="modal-body">
+     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+     </button>        
+     <!-- 16:9 aspect ratio -->
+     <div class="embed-responsive embed-responsive-16by9">
+         <iframe class="embed-responsive-item" src=${
+           projectVideo[0]?.video
+         } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+     </div>
+ </div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="skillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+ <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+ </button>        
+ <!-- 16:9 aspect ratio -->
+ <div class="embed-responsive embed-responsive-16by9">
+     <iframe class="embed-responsive-item" src=${
+       skillVideo[0]?.video
+     } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+ </div>
+</div>
+</div>
+</div>
+</div>
+      <!-- Video Modal End -->
       <div class="vg-page page-about" id="about">
         <div class="container py-5">
           <div class="row">
