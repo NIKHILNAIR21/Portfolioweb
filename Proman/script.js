@@ -35,36 +35,37 @@ if (profileId) {
       );
 
       let projectButton = projectVideo?.video
-        ? ` <button type="button" class="btn-play" data-toggle="modal"
-              data-src=${projectVideo[0]?.video} data-target="#proModal">
+        ? ` <button type="button" class="btn-play" data-bs-toggle="modal"
+              data-src=${projectVideo[0]?.video} data-bs-target="#proModal">
               <span></span>
           </button>`
         : "";
 
       let profileButton = filteredVideo1[0]?.video
-        ? `  <button type="button" class="btn-play" data-toggle="modal"
-          data-src=${filteredVideo1[0]?.video} data-target="#videoModal">
+        ? ` 
+         <button type="button" class="btn-play" data-bs-toggle="modal"
+          data-src=${filteredVideo1[0]?.video} data-bs-target="#videoModal">
           <span></span>
       </button>`
         : "";
 
       let expButton = expVideo[0]?.video
-        ? `   <button type="button" class="btn-play" data-toggle="modal"
-      data-src=${expVideo[0]?.video} data-target="#expModal">
+        ? `   <button type="button" class="btn-play" data-bs-toggle="modal"
+      data-src=${expVideo[0]?.video} data-bs-target="#expModal">
       <span></span>
   </button>`
         : "";
 
       let eduButton = educationVideo[0]?.video
-        ? `      <button type="button" class="btn-play" data-toggle="modal"
-  data-src=${educationVideo[0]?.video} data-target="#eduModal">
+        ? `      <button type="button" class="btn-play" data-bs-toggle="modal"
+  data-src=${educationVideo[0]?.video} data-bs-target="#eduModal">
   <span></span>
   </button>`
         : "";
 
       let skillButton = skillVideo[0]?.video
-        ? `<button type="button" class="btn-play" data-toggle="modal"
-  data-src=${skillVideo[0]?.video} data-target="#skillModal">
+        ? `<button type="button" class="btn-play" data-bs-toggle="modal"
+  data-src=${skillVideo[0]?.video} data-bs-target="#skillModal">
   <span></span>
   </button>`
         : "";
@@ -135,7 +136,10 @@ if (profileId) {
           ? ` 
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
             <h1 class="display-5 mb-5">Skills & Experience</h1>
+            <div class="d-flex mt-4">
             <h3 class="mb-4">My Skills</h3>
+            ${skillButton}
+            </div>
             <div class="row align-items-center">
             ${res?.skills
               ?.map((data) => {
@@ -169,11 +173,12 @@ if (profileId) {
 
       let projectCard = res?.projects?.length
         ? `  
-        <div class="container-fluid bg-light my-5 py-6" id="service">
+        <div class="container-fluid bg-light my-5 py-6" id="project">
         <div class="container">
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="col-lg-6">
+                <div class="col-lg-6 d-flex">
                     <h1 class="display-5 mb-0">My Projects</h1>
+                    ${projectButton}
                 </div>
                
             </div>
@@ -226,12 +231,11 @@ if (profileId) {
         <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
                 <a href="#home" class="nav-item nav-link active">Home</a>
-                <a href="#about" class="nav-item nav-link">About</a>
                 <a href="#skill" class="nav-item nav-link">Skills</a>
                 
             </div>
             <a href="index.html" class="navbar-brand bg-secondary py-3 px-4 mx-3 d-none d-lg-block">
-                <h1 class="text-primary fw-bold m-0">ProMan</h1>
+                <h1 class="text-primary fw-bold m-0">${res?.full_name}</h1>
             </a>
             <div class="navbar-nav me-auto py-0">
                 <a href="#skill" class="nav-item nav-link">Experience</a>
@@ -242,7 +246,103 @@ if (profileId) {
     </nav>
     <!-- Navbar End -->
 
+    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Profile Video</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- 16:9 aspect ratio -->
+                <div class="ratio ratio-16x9">
+                   <iframe class="embed-responsive-item" src=${
+                     filteredVideo1[0]?.video
+                   } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="modal modal-video fade" id="eduModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+    <div class="modal-content rounded-0">
+        <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Education Video</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- 16:9 aspect ratio -->
+            <div class="ratio ratio-16x9">
+               <iframe class="embed-responsive-item" src=${
+                educationVideo[0]?.video
+              }  id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="modal modal-video fade" id="expModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+    <div class="modal-content rounded-0">
+        <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Experience Video</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- 16:9 aspect ratio -->
+            <div class="ratio ratio-16x9">
+               <iframe class="embed-responsive-item" src=${
+                expVideo[0]?.video
+              }  id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal modal-video fade" id="proModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+    <div class="modal-content rounded-0">
+        <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Project Video</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- 16:9 aspect ratio -->
+            <div class="ratio ratio-16x9">
+               <iframe class="embed-responsive-item" src=${
+                projectVideo[0]?.video
+              }  id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="modal modal-video fade" id="skillModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content rounded-0">
+        <div class="modal-header">
+            <h3 class="modal-title" id="exampleModalLabel">Skill Video</h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- 16:9 aspect ratio -->
+            <div class="ratio ratio-16x9">
+               <iframe class="embed-responsive-item" src=${
+                skillVideo[0]?.video
+              } id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+    <!-- Video Modal End -->
     <!-- Header Start -->
     <div class="container-fluid bg-light my-6 mt-0" id="home">
         <div class="container">
@@ -254,11 +354,8 @@ if (profileId) {
                     <div class="typed-text ">${res?.summary}</div>
                     <div class="d-flex align-items-center pt-5">
                         
-                        <button type="button" class="btn-play" data-bs-toggle="modal"
-                            data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-bs-target="#videoModal">
-                            <span></span>
-                        </button>
-                        <h5 class="ms-4 mb-0 d-none d-sm-block">Play Video</h5>
+                     
+                      ${profileButton}
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -268,31 +365,7 @@ if (profileId) {
         </div>
     </div>
     <!-- Header End -->
-
-
-    <!-- Video Modal Start -->
-    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- 16:9 aspect ratio -->
-                    <div class="ratio ratio-16x9">
-                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen allowscriptaccess="always"
-                            allow="autoplay"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Video Modal End -->
-
-
-  
-
+    
 
     <!-- Expertise Start -->
     <div class="container-xxl py-6 pb-5" id="skill">
@@ -300,14 +373,21 @@ if (profileId) {
             <div class="row g-5">
               ${skillCard}
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
-                        <li class="nav-item w-50">
-                            <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill" href="#tab-1">Experience</button>
-                        </li>
-                        <li class="nav-item w-50">
-                            <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill" href="#tab-2">Education</button>
-                        </li>
-                    </ul>
+                <div class="d-flex justify-content-between">
+                ${expButton}
+
+                <ul class="nav nav-pills rounded border border-2 border-primary mb-5">
+                    <li class="nav-item w-50">
+                        <button class="nav-link w-100 py-3 fs-5 active" data-bs-toggle="pill" href="#tab-1">Experience</button>
+                    </li>
+                    <li class="nav-item w-50">
+                        <button class="nav-link w-100 py-3 fs-5" data-bs-toggle="pill" href="#tab-2">Education</button>
+                    </li>
+                </ul>
+                ${eduButton}
+                </div>
+              
+
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
                             <div class="row gy-5 gx-4">
@@ -333,19 +413,6 @@ if (profileId) {
 
 
  
-
-
-  
-
-
- 
-
-
-    
-
-
-  
-
 
     <!-- Copyright Start -->
     <div class="container-fluid bg-dark text-white py-4">
