@@ -296,19 +296,17 @@ if (profileId) {
       res?.social_links.forEach((item) => {
         if (item?.name === "LinkedIn") {
           socialIcon += `
-              <a class="social-item" href=${item?.link}><i class="ti-linkedin"></i></a>
-  
-        
+              <a class="social-item" href=${item?.link}><i class="fa fa-linkedIn"></i></a>
               `;
         }
         if (item?.name === "Twitter") {
           socialIcon += `
-              <a class="social-item" href=${item?.link}><i class="ti-twitter"></i></a>
+              <a class="social-item" href=${item?.link}><i class="fa fa-twitter"></i></a>
               `;
         }
         if (item?.name === "GitHub") {
           socialIcon += `
-              <a class="social-item" href=${item?.link}><i class="ti-github"></i></a>
+              <a class="social-item" href=${item?.link}><i class="fa fa-github"></i></a>
               `;
         }
       });
@@ -372,21 +370,7 @@ if (profileId) {
         <!-- /intro-content -->
   
         <ul class="intro-social">
-          <li>
-            <a href="#"><i class="fa fa-facebook"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-behance"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-dribbble"></i></a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-          </li>
+       ${socialIcon}
         </ul>
         <!-- /intro-social -->
       </section>
@@ -547,31 +531,14 @@ if (profileId) {
         <div class="row">
           <div class="col-six tab-full pull-right social">
             <ul class="footer-social">
-              <li>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-behance"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-dribbble"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-              </li>
+       ${socialIcon}
             </ul>
           </div>
   
           <div class="col-six tab-full">
             <div class="copyright">
-              <span>© Copyright Kards 2016.</span>
-              <span
-                >Design by
-                <a href="http://www.styleshout.com/">styleshout</a></span
-              >
+              <span>© Copyright ResumeBuild.</span>
+           
             </div>
           </div>
   
